@@ -8,18 +8,21 @@ import {Task} from "../model/task";
   styleUrls: ['./add-items.component.css']
 })
 export class AddItemsComponent {
-  taskObj : Task = new Task();
-  taskArr : Task[] = [];
+  taskObj: Task = new Task();
+  taskArr: Task[] = [];
 
-  addTaskVal : object = {name:'', description:'',status:'',start_date:'',end_date:'' };
-  constructor(private crudService : CrudService) {}
+  addTaskVal: object = {name: '', description: '', status: '', start_date: '', end_date: ''};
+
+  constructor(private crudService: CrudService) {
+  }
+
   ngOnInit(): void {
     this.addTaskVal = {name: '', description: '', status: '', start_date: '', end_date: ''};
     this.taskObj = new Task();
     this.taskArr = [];
     // this.getAllTask();
   }
-}
+
 //   getAllTask(){
 //     this.crudService.getAllTask().subscribe(res => {
 //       this.taskArr = res;
@@ -36,4 +39,4 @@ export class AddItemsComponent {
 //       alert(err);
 //     })
 //   }
-// }
+}
