@@ -5,20 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 import { ListItemsComponent } from './list-items/list-items.component';
-import { EditComponent } from './list-items/edit/edit.component';
-import { DeleteComponent } from './list-items/delete/delete.component';
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     AddItemsComponent,
     ListItemsComponent,
-    EditComponent,
-    DeleteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
