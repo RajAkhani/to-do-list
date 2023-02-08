@@ -1,27 +1,66 @@
-<div class="container-fluid bg-light">
-  <div class="container bg-light">
-    <div class="row mt-4">
-      <div class="col"></div>
-      <div class="col-md-6 bg-white">
-        <div class="bg-warning shadow">
-          <h4 class="text-white">ToDo List</h4>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h3>ToDO List</h3>
+    <div class="outer-div">
+      <div class="row">
+        <div class="col-md-4">
+          <label>Name</label>
         </div>
-        <div class="shadow">
-          <div class="row input-group p-4">
-            <div class="col-md-1"><input type="text" class="" placeholder="Enter task name"></div>
-            <div class="col-md-1"><input type="text" class="" placeholder="Enter task description"></div>
-              <div class="col-md-1"><select class="">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="completed">Completed</option>
-              </select></div>
-            <div class="col-md-1"><input type="date" class="" placeholder="start date"></div>
-            <div class="col-md-1"><input type="date" class="" placeholder="end date"></div>
-            <div class="col-md-1"><button class="btn btn-success " type="button">+</button></div>
-          </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control">
         </div>
       </div>
-      <div class="col"></div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <label>Description</label>
+        </div>
+        <div class="col-md-12">
+          <textarea  cols="30" rows="5" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>Status</label>
+        </div>
+        <div class="col-md-4">
+          <select class="form-control">
+            <option>--Select--</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>Start Date</label>
+        </div>
+        <div class="col-md-8">
+          <input type="date" class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>End Date</label>
+        </div>
+        <div class="col-md-8">
+          <input type="date" class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6 text-right">
+          <button class="btn btn-lg btn-sm" style="margin-left: 2px;">List</button>
+          <button class="btn btn-lg btn-sm" style="margin-left: 2px;">Add</button>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="col-md-4"></div>
 </div>
