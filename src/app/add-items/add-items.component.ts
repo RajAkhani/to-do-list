@@ -9,7 +9,7 @@ import {CrudService} from "../crud.service";
 })
 export class AddItemsComponent implements OnInit{
 
-  taskObj: TaskObj
+  taskObj: TaskObj;
   constructor(private crudService: CrudService) {
     this.taskObj = new TaskObj();
   }
@@ -17,9 +17,19 @@ export class AddItemsComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  getAllTasks(){
-
+  onAdd(){
+    const isData = localStorage.getItem("taskData");
+    if(isData == null){
+      const newArr = [];
+      newArr.push(this.taskObj);
+      localStorage.setItem("taskData", JSON.stringify(newArr));
+    } else {
+      const oldData = JSON.parse(isData);
+      oldData.push(this.taskObj);
+      localStorage.setItem("taskData", JSON.stringify(oldData));
+    }
   }
+
 }
 
 export class TaskObj {

@@ -3,63 +3,77 @@
   <div class="col-md-4">
     <h3>ToDO List</h3>
     <div class="outer-div">
-      <div class="row">
-        <div class="col-md-4">
-          <label>Name</label>
+      <form #form="ngForm">
+        <div class="row">
+          <div class="col-md-4">
+            <label>Name</label>
+          </div>
+          <div class="col-md-8">
+            <input type="text" required name="name" [(ngModel)]="taskObj.Name" #fname="ngModel" class="form-control">
+            <div *ngIf="fname.touched">
+              <span *ngIf="fname.errors?.['required']">Name is required</span>
+            </div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <input type="text" class="form-control">
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <label>Description</label>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Description</label>
+          </div>
+          <div class="col-md-12">
+            <textarea name="desc" cols="30" rows="5" class="form-control" [(ngModel)]="taskObj.Description"></textarea>
+          </div>
         </div>
-        <div class="col-md-12">
-          <textarea  cols="30" rows="5" class="form-control"></textarea>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <label>Status</label>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Status</label>
+          </div>
+          <div class="col-md-4">
+            <select name="status" #status="ngModel" class="form-control" required [(ngModel)]="taskObj.Status">
+              <option>--Select--</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="completed">Completed</option>
+            </select>
+            <div *ngIf="status.touched">
+              <span *ngIf="status.errors?.['required']">Name is required</span>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <select class="form-control">
-            <option>--Select--</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <label>Start Date</label>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Start Date</label>
+          </div>
+          <div class="col-md-8">
+            <input name="sdate" #sdate="ngModel" type="date" required class="form-control" [(ngModel)]="taskObj.Start_Date">
+            <div *ngIf="sdate.touched">
+              <span *ngIf="sdate.errors?.['required']">Name is required</span>
+            </div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <input type="date" class="form-control">
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <label>End Date</label>
+        <div class="row">
+          <div class="col-md-4">
+            <label>End Date</label>
+          </div>
+          <div class="col-md-8">
+            <input name="edate" #edate="ngModel" type="date" required class="form-control" [(ngModel)]="taskObj.End_Date">
+            <div *ngIf="edate.touched">
+              <span *ngIf="edate.errors?.['required']">Name is required</span>
+            </div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <input type="date" class="form-control">
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6 text-right">
-          <button class="btn btn-lg btn-sm" style="margin-left: 2px;">List</button>
-          <button class="btn btn-lg btn-sm" style="margin-left: 2px;">Add</button>
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6 text-right">
+            <button class="btn btn-lg btn-sm" style="margin-left: 2px;">List</button>
+            <button class="btn btn-lg btn-sm" style="margin-left: 2px;" [disabled]="form.invalid" (click)="onAdd()">Add</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <div class="col-md-4"></div>
