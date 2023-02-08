@@ -34,6 +34,7 @@ export class ListItemsComponent implements OnInit{
         }
       }
       localStorage.setItem('taskData',JSON.stringify(localData));
+      this.getAllTasks();
     }
   }
 }
