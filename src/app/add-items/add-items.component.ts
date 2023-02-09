@@ -17,6 +17,25 @@ export class AddItemsComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  chk: boolean = this.check();
+  check(){
+    const isData = localStorage.getItem("taskData");
+    if(isData != null){
+      const isEdit = JSON.parse(isData);
+      for (let index = 0; index<isEdit.length; index++){
+        if(isEdit[index].edit == 1) {
+          console.log(isEdit[index].edit);
+          this.editData();
+          return true;
+        }
+      }
+    }
+    else {
+      return false;
+    }
+    return false;
+  }
+
   onAdd(){
     const isData = localStorage.getItem("taskData");
     if(isData == null){
@@ -30,8 +49,43 @@ export class AddItemsComponent implements OnInit{
       oldData.push(this.taskObj);
       localStorage.setItem("taskData", JSON.stringify(oldData));
     }
+    // this.taskObj = new TaskObj();
+    location.reload();
+    alert("Added")
+
   }
 
+  editData(){
+    const isData = localStorage.getItem("taskData");
+    if(isData != null){
+      const isEdit = JSON.parse(isData);
+      for (let index = 0; index<isEdit.length; index++){
+        if(isEdit[index].edit == 1) {
+          console.log(isEdit[index]);
+          this.taskObj = isEdit[index];
+          console.log(this.taskObj);
+          break;
+        }
+      }
+    }
+  }
+  onEdit(){
+    const isData = localStorage.getItem("taskData");
+    if(isData != null){
+      const isEdit = JSON.parse(isData);
+      for (let index = 0; index<isEdit.length; index++){
+        if(isEdit[index].edit == 1) {
+          this.taskObj.id=isEdit[index].id;
+          this.taskObj.edit=0;
+          isEdit[index] = this.taskObj;
+          break;
+        }
+      }
+      localStorage.setItem("taskData", JSON.stringify(isEdit));
+      location.reload();
+      alert("Updated");
+    }
+  }
 }
 
 export class TaskObj {
@@ -41,6 +95,7 @@ export class TaskObj {
   Status: string;
   Start_Date: string;
   End_Date: string;
+  edit: number;
   constructor() {
     this.id = 0;
     this.Name = "";
@@ -48,6 +103,7 @@ export class TaskObj {
     this.Status="";
     this.Start_Date="";
     this.End_Date='';
+    this.edit=0;
   }
 
 }

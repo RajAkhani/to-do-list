@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskObj} from "../add-items/add-items.component";
 import {CrudService} from "../services/crud.service";
+import {AddItemsComponent} from "../add-items/add-items.component";
 
 @Component({
   selector: 'app-list-items',
@@ -9,10 +10,7 @@ import {CrudService} from "../services/crud.service";
 })
 export class ListItemsComponent implements OnInit{
   listArr: TaskObj[] = [];
-
-  constructor(private crudService: CrudService) {
-
-  }
+  constructor(private crudService: CrudService) {}
   ngOnInit(): void {
     this.getAllTasks()
   }
@@ -37,4 +35,21 @@ export class ListItemsComponent implements OnInit{
       this.getAllTasks();
     }
   }
+  onEdit(item: TaskObj){
+    console.log(item.id);
+    const isData = localStorage.getItem("taskData");
+    if(isData != null){
+      const localData = JSON.parse(isData);
+      for (let index=0; index<localData.length;index++){
+        if(localData[index].id == item.id){
+          localData[index].edit = 1;
+        }
+      }
+      localStorage.setItem('taskData',JSON.stringify(localData));
+      window.location.href = 'http://localhost:4200/add';
+    }
+  }
 }
+
+
+

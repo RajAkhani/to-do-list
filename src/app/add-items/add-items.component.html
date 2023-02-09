@@ -9,9 +9,9 @@
             <label>Name</label>
           </div>
           <div class="col-md-8">
-            <input type="text" required name="name" [(ngModel)]="taskObj.Name" #fname="ngModel" class="form-control">
+            <input type="text" required name="name" value="{{taskObj.Name}}" [(ngModel)]="taskObj.Name" #fname="ngModel" class="form-control">
             <div *ngIf="fname.touched">
-              <span *ngIf="fname.errors?.['required']">Name is required</span>
+              <span *ngIf="fname.errors?.['required']" class="error">*Name is required</span>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
               <option value="completed">Completed</option>
             </select>
             <div *ngIf="status.touched">
-              <span *ngIf="status.errors?.['required']">Name is required</span>
+              <span *ngIf="status.errors?.['required']" class="error">*Status is required</span>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
           <div class="col-md-8">
             <input name="sdate" #sdate="ngModel" type="date" required class="form-control" [(ngModel)]="taskObj.Start_Date">
             <div *ngIf="sdate.touched">
-              <span *ngIf="sdate.errors?.['required']">Name is required</span>
+              <span *ngIf="sdate.errors?.['required']" class="error">*Start date is required</span>
             </div>
           </div>
         </div>
@@ -59,9 +59,9 @@
             <label>End Date</label>
           </div>
           <div class="col-md-8">
-            <input name="edate" #edate="ngModel" type="date" required class="form-control" [(ngModel)]="taskObj.End_Date">
+            <input name="edate" #edate="ngModel" type="date" required class="form-control" [(ngModel)]="taskObj.End_Date" min="{{taskObj.Start_Date}}">
             <div *ngIf="edate.touched">
-              <span *ngIf="edate.errors?.['required']">Name is required</span>
+              <span *ngIf="edate.errors?.['required']" class="error">*End Date is required</span>
             </div>
           </div>
         </div>
@@ -69,8 +69,9 @@
         <div class="row">
           <div class="col-md-6"></div>
           <div class="col-md-6 text-right">
-            <button class="btn btn-lg btn-sm" style="margin-left: 2px;">List</button>
-            <button class="btn btn-lg btn-sm" style="margin-left: 2px;" [disabled]="form.invalid" (click)="onAdd()">Add</button>
+<!--            <button class="btn btn-lg btn-sm" style="margin-left: 2px;" routerLink="list">List</button>-->
+            <button class="btn btn-lg btn-sm" style="margin-left: 2px;" [disabled]="form.invalid" *ngIf="chk" (click)="onEdit()">Edit</button>
+            <button class="btn btn-lg btn-sm" style="margin-left: 2px;" [disabled]="form.invalid" *ngIf="!chk" (click)="onAdd()">Add</button>
           </div>
         </div>
       </form>

@@ -19,18 +19,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of listArr; let sr = index">
-                <td>{{sr+1}}</td>
-                <td>{{item.Name}}</td>
-                <td>{{item.Description}}</td>
-                <td>{{item.Status}}</td>
-                <td>{{item.Start_Date}}</td>
-                <td>{{item.End_Date}}</td>
-                <td>
-                  <span class="glyphicon glyphicon-pencil"></span>
-                  <span class="glyphicon glyphicon-remove-sign" style="margin-left: 5px" (click)="onDelete(item)" ></span>
-                </td>
-              </tr>
+              <ng-container *ngIf="listArr.length!=0">
+                <tr *ngFor="let item of listArr; let sr = index">
+                  <td>{{sr+1}}</td>
+                  <td>{{item.Name}}</td>
+                  <td>{{item.Description}}</td>
+                  <td>{{item.Status}}</td>
+                  <td>{{item.Start_Date}}</td>
+                  <td>{{item.End_Date}}</td>
+                  <td>
+                    <span class="glyphicon glyphicon-pencil" (click)="onEdit(item)"></span>
+                    <span class="glyphicon glyphicon-remove-sign" style="margin-left: 5px" (click)="onDelete(item)" ></span>
+                  </td>
+                </tr>
+              </ng-container>
+              <ng-container *ngIf="listArr.length==0">
+                <tr>
+                  <td colspan="7" class="text-center">No Data Available</td>
+                </tr>
+              </ng-container>
             </tbody>
           </table>
         </div>
