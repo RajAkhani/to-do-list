@@ -6,10 +6,10 @@
       <form #form="ngForm">
         <div class="row row-pad">
           <div class="col-md-4">
-            <label>Name</label>
+            <label>Name {{taskObj.Name}}</label>
           </div>
           <div class="col-md-8">
-            <input type="text" required name="name" value="{{taskObj.Name}}" [(ngModel)]="taskObj.Name" #fname="ngModel" class="form-control">
+            <input type="text" required name="name" [(ngModel)]="taskObj.Name"  #fname="ngModel" class="form-control">
             <div *ngIf="fname.touched">
               <span *ngIf="fname.errors?.['required']" class="error">*Name is required</span>
             </div>
@@ -31,7 +31,6 @@
           </div>
           <div class="col-md-4">
             <select name="status" #status="ngModel" class="form-control" required [(ngModel)]="taskObj.Status">
-              <option>--Select--</option>
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
               <option value="completed">Completed</option>

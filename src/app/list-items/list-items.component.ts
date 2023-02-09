@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskObj} from "../add-items/add-items.component";
 import {CrudService} from "../services/crud.service";
-import {AddItemsComponent} from "../add-items/add-items.component";
+
 
 @Component({
   selector: 'app-list-items',
@@ -36,7 +36,7 @@ export class ListItemsComponent implements OnInit{
     }
   }
   onEdit(item: TaskObj){
-    console.log(item.id);
+    console.log("--------------",item.id);
     const isData = localStorage.getItem("taskData");
     if(isData != null){
       const localData = JSON.parse(isData);

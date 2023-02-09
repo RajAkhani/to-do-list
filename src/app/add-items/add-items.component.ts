@@ -10,21 +10,23 @@ import {CrudService} from "../services/crud.service";
 export class AddItemsComponent implements OnInit{
 
   taskObj: TaskObj;
+  chk = false;
   constructor(private crudService: CrudService) {
     this.taskObj = new TaskObj();
   }
 
   ngOnInit(): void {
+    this.chk= this.check();
   }
 
-  chk: boolean = this.check();
+
   check(){
     const isData = localStorage.getItem("taskData");
     if(isData != null){
       const isEdit = JSON.parse(isData);
       for (let index = 0; index<isEdit.length; index++){
         if(isEdit[index].edit == 1) {
-          console.log(isEdit[index].edit);
+          console.log("+++++",isEdit[index].edit);
           this.editData();
           return true;
         }
@@ -61,8 +63,13 @@ export class AddItemsComponent implements OnInit{
       const isEdit = JSON.parse(isData);
       for (let index = 0; index<isEdit.length; index++){
         if(isEdit[index].edit == 1) {
-          console.log(isEdit[index]);
+          // console.log(isEdit[index]);
           this.taskObj = isEdit[index];
+          // this.taskObj.Name = isEdit[index].Name;
+          // this.taskObj.Description = isEdit[index].Description;
+          // this.taskObj.Status = isEdit[index].Status;
+          // this.taskObj.Start_Date = isEdit[index].Start_Date;
+          // this.taskObj.End_Date = isEdit[index].End_Date;
           console.log(this.taskObj);
           break;
         }
