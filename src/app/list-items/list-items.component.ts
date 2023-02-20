@@ -18,6 +18,7 @@ export class ListItemsComponent implements OnInit{
     const isData = localStorage.getItem("taskData");
     if(isData != null){
       const localData = JSON.parse(isData);
+      // console.log(typeof localData);
       this.listArr = localData;
     }
   }
@@ -40,6 +41,7 @@ export class ListItemsComponent implements OnInit{
     const isData = localStorage.getItem("taskData");
     if(isData != null){
       const localData = JSON.parse(isData);
+
       for (let index=0; index<localData.length;index++){
         if(localData[index].id == item.id){
           localData[index].edit = 1;
